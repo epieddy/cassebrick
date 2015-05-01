@@ -3,22 +3,23 @@
 #include "Application.h"
 #include "HomeScreen.h"
 #include "FontManager.h"
+#include "SoundManager.h"
 
 HomeScreen::HomeScreen(Application * app) :
 Screen(app)
 {
-	this->_button = new Button("test");
-	this->_button->move(50, 50);
+	this->_button = new Button("Youhou !!!");
 }
 
 void HomeScreen::show()
 {
-
+	SoundManager::get()->music("night").setLoop(true);
+	SoundManager::get()->music("night").play();
 }
 
 void HomeScreen::hide()
 {
-
+	SoundManager::get()->music("night").stop();
 }
 
 void HomeScreen::handleEvent(const sf::Event & event)
@@ -36,10 +37,6 @@ void HomeScreen::handleEvent(const sf::Event & event)
 void HomeScreen::render(sf::RenderTarget & target)
 {
 	target.clear(sf::Color::White);
-
-	sf::Time time = this->_clock.getElapsedTime();
-	this->_button->setRotation(time.asSeconds() * 5);
-
 	target.draw(*this->_button);
 }
 

@@ -4,6 +4,7 @@
 #include "HomeScreen.h"
 #include "ConfigScreen.h"
 #include "FontManager.h"
+#include "SoundManager.h"
 
 
 Application::Application()
@@ -11,6 +12,7 @@ Application::Application()
 	Screen *	screen;
 
 	FontManager::get()->init();
+	SoundManager::get()->init();
 
 	this->_window = new sf::RenderWindow(sf::VideoMode(600, 800), "Casse Brick", sf::Style::Titlebar | sf::Style::Close);
 

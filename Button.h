@@ -17,6 +17,9 @@ public:
 	Button(string text);
 	~Button();
 
+	void	setFocus(bool focus);
+	bool	getFocus() const;
+
 protected:
 	void update();
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const;
@@ -24,6 +27,7 @@ protected:
 private:
 	sf::Text *				_text;
 	sf::RectangleShape *	_rect;
+	bool					_focus;
 
 private:
 	const float vPadding = 20;

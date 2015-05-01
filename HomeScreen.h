@@ -1,7 +1,6 @@
 #ifndef __HOME_SCREEN_H__
 # define __HOME_SCREEN_H__
 
-#include <SFML/System/Clock.hpp>
 #include "Screen.h"
 #include "Button.h"
 
@@ -20,7 +19,6 @@ public:
 
 private:
 	Button *	_button;
-	sf::Clock	_clock;
 };
 
 #endif // !__HOME_SCREEN_H__

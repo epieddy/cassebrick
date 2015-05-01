@@ -7,7 +7,7 @@ bool FontManager::init()
 	sf::Font *	font;
 
 	font = new sf::Font();
-	if (!font->loadFromFile("sansation.ttf"))
+	if (!font->loadFromFile("fonts/sansation.ttf"))
 	{
 		return false;
 	}
