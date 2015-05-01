@@ -9,25 +9,24 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 
+#include "Focusable.h"
+
 using namespace std;
 
-class Button : public sf::Drawable, public sf::Transformable
+class Button : public sf::Drawable, public sf::Transformable, public Focusable
 {
 public:
 	Button(string text);
 	~Button();
 
-	void	setFocus(bool focus);
-	bool	getFocus() const;
-
 protected:
 	void update();
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const;
+	void focusChanged(bool focus);
 
 private:
 	sf::Text *				_text;
 	sf::RectangleShape *	_rect;
-	bool					_focus;
 
 private:
 	const float vPadding = 20;

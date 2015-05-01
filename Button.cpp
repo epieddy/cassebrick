@@ -5,8 +5,6 @@
 
 Button::Button(string text)
 {
-	this->_focus = false;
-
 	this->_text = new sf::Text();
 	this->_rect = new sf::RectangleShape();
 
@@ -25,28 +23,23 @@ Button::~Button()
 	delete this->_rect;
 }
 
-void Button::setFocus(bool focus)
-{
-	this->_focus = focus;
-	this->update();
-}
-
-bool Button::getFocus() const
-{
-	return this->_focus;
-}
-
 void Button::update()
 {
 	sf::Vector2f rectSize;
 	sf::FloatRect textBounds = this->_text->getLocalBounds();
 
-	this->_text->move(Button::hPadding / 2 - textBounds.left, Button::vPadding / 2 - textBounds.top);
+	this->_text->setPosition(Button::hPadding / 2 - textBounds.left, Button::vPadding / 2 - textBounds.top);
 
 	rectSize.x = textBounds.width + Button::hPadding;
 	rectSize.y = textBounds.height + Button::vPadding;
 
 	this->_rect->setSize(rectSize);
+
+	this->_text->setColor(sf::Color::Black);
+	if (this->getFocus())
+	{
+		this->_text->setColor(sf::Color::Red);
+	}
 }
 
 void Button::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -55,4 +48,9 @@ void Button::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 	target.draw(*this->_rect, states);
 	target.draw(*this->_text, states);
+}
+
+void Button::focusChanged(bool focus)
+{
+	this->update();
 }

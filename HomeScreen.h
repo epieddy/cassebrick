@@ -3,6 +3,7 @@
 
 #include "Screen.h"
 #include "Button.h"
+#include "FocusableGroup.h"
 
 class Application;
 
@@ -19,6 +20,10 @@ public:
 
 private:
 	Button *	_button;
+	Button *	_button2;
+	Button *	_button3;
+	FocusableGroup *	_group;
+	FocusableGroup *	_group2;
 };
 
 #endif // !__HOME_SCREEN_H__

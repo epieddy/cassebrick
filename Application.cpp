@@ -15,6 +15,7 @@ Application::Application()
 	SoundManager::get()->init();
 
 	this->_window = new sf::RenderWindow(sf::VideoMode(600, 800), "Casse Brick", sf::Style::Titlebar | sf::Style::Close);
+	this->_window->setFramerateLimit(30);
 
 	screen = new HomeScreen(this);
 	this->_screens[screen->name()] = screen;
