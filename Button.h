@@ -9,20 +9,20 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 
-#include "Focusable.h"
+#include "Widget.h"
 
 using namespace std;
 
-class Button : public sf::Drawable, public sf::Transformable, public Focusable
+class Button : public sf::Drawable, public sf::Transformable, public Widget
 {
 public:
-	Button(string text);
+	Button(string text, Widget * parent);
 	~Button();
 
 protected:
 	void update();
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const;
-	void focusChanged(bool focus);
+	void focusChanged();
 
 private:
 	sf::Text *				_text;

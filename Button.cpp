@@ -3,7 +3,8 @@
 #include "FontManager.h"
 #include "Button.h"
 
-Button::Button(string text)
+Button::Button(string text, Widget * parent)
+	: Widget(parent)
 {
 	this->_text = new sf::Text();
 	this->_rect = new sf::RectangleShape();
@@ -50,7 +51,7 @@ void Button::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.draw(*this->_text, states);
 }
 
-void Button::focusChanged(bool focus)
+void Button::focusChanged()
 {
 	this->update();
 }

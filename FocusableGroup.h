@@ -3,26 +3,26 @@
 
 #include <vector>
 
-#include "Focusable.h"
+#include "Widget.h"
 
 using namespace std;
 
-class FocusableGroup : public Focusable
+class FocusableGroup : public Widget
 {
 public:
-	FocusableGroup();
+	FocusableGroup(Widget * parent);
 
-	void		addItem(Focusable * item);
-	Focusable *	currentItem();
+	void		addItem(Widget * item);
+	Widget *	currentItem();
 	void		next();
 	void		prev();
 	void		activate(int index);
 
 protected:
-	void	focusChanged(bool focus);
+	void	focusChanged();
 
 private:
-	vector<Focusable *>	_items;
+	vector<Widget *>	_items;
 	int					_index;
 };
 

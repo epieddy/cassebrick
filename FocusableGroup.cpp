@@ -1,19 +1,20 @@
 #include "FocusableGroup.h"
 
-FocusableGroup::FocusableGroup()
-	: _items(),
+FocusableGroup::FocusableGroup(Widget * parent)
+	: Widget(parent),
+	_items(),
 	_index(0)
 {
 
 }
 
-void FocusableGroup::addItem(Focusable * item)
+void FocusableGroup::addItem(Widget * item)
 {
 	this->_items.push_back(item);
 	item->setFocus(false);
 }
 
-Focusable * FocusableGroup::currentItem()
+Widget * FocusableGroup::currentItem()
 {
 	if (this->_items.empty())
 	{
@@ -76,12 +77,12 @@ void FocusableGroup::activate(int index)
 	this->_items[this->_index]->setFocus(true);
 }
 
-void FocusableGroup::focusChanged(bool focus)
+void FocusableGroup::focusChanged()
 {
 	if (this->_items.empty())
 	{
 		return;
 	}
 
-	this->_items[this->_index]->setFocus(focus);
+	this->_items[this->_index]->setFocus(this->getFocus());
 }
